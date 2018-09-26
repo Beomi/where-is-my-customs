@@ -16,7 +16,7 @@ class KakaoUser(DateTimeCheckModel):
         primary_key=True,
         unique=True,
     )
-    context = JSONField()
+    context = JSONField(default={})
 
     def __str__(self):
         return self.user_key
