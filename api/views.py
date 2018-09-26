@@ -94,7 +94,9 @@ def message(request):
                 tracking_number=content,
             )
             result = find_by_hbl(content)
-            user.context['state'] = 'idle'
+            user.context = {
+                'state': 'idle'
+            }
             user.save()
             return JsonResponse({
                 'message': {
