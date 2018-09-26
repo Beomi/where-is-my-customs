@@ -26,6 +26,9 @@ SECRET_KEY = "9lco!gaoyf)wrvj3+5z2+$wj$k^k_@%$cx8%tfj@weqye0mcag"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+if os.environ.get('HEROKU') == 'True':
+    DEBUG = False
+
 # Application definition
 
 INSTALLED_APPS = [
