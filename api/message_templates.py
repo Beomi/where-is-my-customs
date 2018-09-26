@@ -2,8 +2,8 @@ HBL_MESSAGE_TEMPLATE = '''\
 조회하신 {cargMtNo},
 송장번호 {hblNo} 화물은
 {etprDt}일자 기준
-[{prgsStts}] 상태이며, 
-[{prcsStcd}] 중 입니다.
+[{prcsStcd}] 되었으며, 
+현재 [{prgsStts or '통관완료'}] 입니다.
 
 수입 신고된 제품은 
 "{prnm}"이며,
