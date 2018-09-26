@@ -93,17 +93,16 @@ def message(request):
             })
         try:
             hbl_no = re.sub(r"\D", "", content)
-
-            pq, created = PackageQuery.objects.get_or_create(
-                user=user,
-                type='HBL',
-                tracking_number=hbl_no,
-            )
             result = find_by_hbl(hbl_no)
             user.context = {
                 'state': 'idle'
             }
             user.save()
+            pq, created = PackageQuery.objects.get_or_create(
+                user=user,
+                type='HBL',
+                tracking_number=hbl_no,
+            )
             return JsonResponse({
                 'message': {
                     'text': HBL_MESSAGE_TEMPLATE.format(**result),
