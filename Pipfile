@@ -9,6 +9,7 @@ requests = "*"
 django-heroku = "*"
 gunicorn = "*"
 jsonfield = "*"
+sentry-sdk = "*"
 
 [requires]
 python_version = "3.6"
