@@ -41,6 +41,9 @@ def keyboard(request):
 @csrf_exempt
 def message(request):
     params = json.loads(request.body)
+
+    print('Params: ', params)
+
     user_key = params['user_key']
     content = params['content']
 
