@@ -1,4 +1,5 @@
 import json
+import re
 
 from django.utils import timezone
 from django.http import JsonResponse
@@ -91,12 +92,14 @@ def message(request):
                 }
             })
         try:
+            hbl_no = re.sub(r"\D", "", content)
+
             pq, created = PackageQuery.objects.get_or_create(
                 user=user,
                 type='HBL',
-                tracking_number=content,
+                tracking_number=hbl_no,
             )
-            result = find_by_hbl(content)
+            result = find_by_hbl(hbl_no)
             user.context = {
                 'state': 'idle'
             }
@@ -111,7 +114,7 @@ def message(request):
             print(e)
             return JsonResponse({
                 'message': {
-                    'text': '잘못된 HBL 번호이거나 아직 통관이 시작되지 않았습니다. 확인후 다시 적어주세요.',
+                    'text': f'<{content}>이 잘못된 HBL 번호이거나, 혹은 해당 물품은 아직 통관이 시작되지 않았습니다. 확인후 다시 적어주세요.',
                 },
                 'keyboard': DEFAULT_KEYBOARD,
             })
