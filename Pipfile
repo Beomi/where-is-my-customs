@@ -10,8 +10,5 @@ django-heroku = "*"
 gunicorn = "*"
 jsonfield = "*"
 
-[dev-packages]
-jupyter = "*"
-
 [requires]
 python_version = "3.6"
